@@ -1,85 +1,875 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="THI AGENCY | Social Links">
-    <meta property="og:description" content="THI AGENCY">
-    <meta property="og:image" content="https://ibb.co.com/7JwMYJL"> <!-- Periksa apakah link gambar ini benar -->
-    <title>THI AGENCY | Social Links</title>
-    <link rel="icon" href="/THI/Images/iwan.png">
-    <link rel="stylesheet" href="style.css">
+    <title>THI Agency - Your TikTok Marketing Partner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #FF0050;
+            --secondary: #00F2EA;
+            --accent: #FFD300;
+            --dark: #121212;
+            --light: #FFFFFF;
+            --gray: #8A8AA0;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --gradient-reverse: linear-gradient(135deg, var(--secondary), var(--primary));
+            --gradient-text: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            --shadow: 0 10px 30px rgba(255, 0, 80, 0.15);
+            --shadow-hover: 0 15px 40px rgba(255, 0, 80, 0.25);
+            --card-bg: rgba(30, 30, 46, 0.95);
+            --card-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0f1f 0%, #1a1a2e 50%, #16213e 100%);
+            color: var(--light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 0, 80, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 242, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 211, 0, 0.05) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            padding: 40px 0 30px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .profile-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid transparent;
+            background: var(--gradient) padding-box, var(--gradient) border-box;
+            background-origin: border-box;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .verified-badge {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            border: 3px solid var(--dark);
+            z-index: 3;
+        }
+
+        .profile-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 170px;
+            height: 170px;
+            background: var(--gradient);
+            border-radius: 50%;
+            filter: blur(20px);
+            opacity: 0.3;
+            animation: pulse 2s infinite;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 5px;
+        }
+
+        /* Links Section - FIXED BLUR */
+        .links-section {
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .link-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            /* HAPUS backdrop-filter yang menyebabkan blur hitam */
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.1;
+            transition: left 0.5s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .link-card:hover::before {
+            left: 0;
+        }
+
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .link-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 15px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .link-text {
+            flex: 1;
+        }
+
+        .link-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--light);
+        }
+
+        .link-description {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .link-arrow {
+            color: var(--gray);
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .link-card:hover .link-arrow {
+            transform: translateX(5px);
+            color: var(--primary);
+        }
+
+        /* Social Links - FIXED BLUR */
+        .social-section {
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .social-title {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .social-link {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            /* HAPUS backdrop-filter */
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .social-link:hover::before {
+            opacity: 0.1;
+        }
+
+        .social-icon {
+            font-size: 1.5rem;
+            color: var(--light);
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover .social-icon {
+            transform: scale(1.2);
+            color: var(--primary);
+        }
+
+        /* Featured Section - FIXED BLUR */
+        .featured-section {
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+
+        .featured-title {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .featured-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            /* HAPUS backdrop-filter */
+        }
+
+        .featured-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 40px rgba(255, 211, 0, 0.2);
+        }
+
+        .featured-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .featured-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            margin: 0 auto 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .featured-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .featured-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--light);
+        }
+
+        .featured-content p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px 0 20px;
+            color: var(--gray);
+            font-size: 0.9rem;
+            animation: fadeIn 1s ease 1.2s both;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .footer-text {
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.5;
+            }
+        }
+
+        /* Floating Elements */
+        .floating {
+            position: fixed;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation-delay: 0s;
+        }
+
+        .floating:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            width: 80px;
+            height: 80px;
+            background: var(--secondary);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation-delay: 2s;
+        }
+
+        .floating:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .profile-glow {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .stats {
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+            }
+            
+            .social-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 10px;
+            }
+            
+            .social-link {
+                padding: 12px;
+            }
+            
+            .social-icon {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stats {
+                gap: 15px;
+            }
+            
+            .stat-item {
+                flex: 1;
+            }
+            
+            .link-content {
+                gap: 12px;
+            }
+            
+            .link-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid transparent;
+            border-top: 3px solid var(--primary);
+            border-right: 3px solid var(--secondary);
+            border-bottom: 3px solid var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <div class="rain">
-        <div class="lightining">
-            <div class="profile">
-                <!-- Pastikan path gambar benar -->
-                <img src="/THI/Images/thi.png" alt="Profile Photo" class="profile-photo">
-                <h2>
-                    THI AGENCY
-                    <img src="/THI/Images/verified.png" alt="Verified Badge" class="verified-image" style="height: 25px;">
-                </h2>
-                <div class="profile-description" style="text-align: center;">
-                    <p>Klik Link Daftar Anggota THI AGENCY untuk menjadi Anggota THI Agency.</p>
-                    <br>
-                    <p>Klik Link BUKA AGENCY SENDIRI Untuk Mendirikan Agency Dengan Nama Agency Sendiri di THI MANAGEMENT.</p>
-                    <br>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Floating Background Elements -->
+    <div class="floating"></div>
+    <div class="floating"></div>
+    <div class="floating"></div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="profile-container">
+                <div class="profile-glow"></div>
+                <img src="img/thi.png" alt="THI Agency" class="profile-image">
+                <div class="verified-badge">
+                    <i class="fas fa-check"></i>
+                </div>
+            </div>
+            
+            <h1 class="title">THI Agency</h1>
+            <p class="subtitle">Agency TikTok Terpercaya di Indonesia<br>Membantu Brand Tumbuh & Viral di TikTok</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">150+</span>
+                    <span class="stat-label">Brand</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">87%</span>
+                    <span class="stat-label">Success Rate</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5K+</span>
+                    <span class="stat-label">Konten Viral</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Links Section -->
+        <section class="links-section">
+            <div class="link-card" onclick="window.open('https://thiagency.id', '_blank')">
+                <div class="link-content">
+                    <div class="link-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="link-text">
+                        <div class="link-title">Website Utama</div>
+                        <div class="link-description">Kunjungi website utama THI Agency</div>
+                    </div>
+                    <div class="link-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
                 </div>
             </div>
 
-            <a href="https://api.whatsapp.com/send?phone=6281219399064&text=Halo%20Admin,%20saya%20ingin%20bergabung%20dengan%20agency%20THI." 
-   class="link" 
-   target="_blank" 
-   rel="noopener noreferrer">
-    <div style="display: flex; align-items: center;">
-        <img src="Images/WA.png" 
-             alt="WhatsApp Logo" 
-             style="width: 40px; margin-right: 10px;">
-        <div>
-            <h3>Daftar Anggota Agency THI</h3>
-            <p>Klik di sini untuk mendaftar</p>
-        </div>
-    </div>
-</a>
-
-             
-            
-                <!-- Link ke WhatsApp untuk buka agency sendiri -->
-                <a href="https://wa.me/6281219399064" 
-                   class="link" 
-                   target="_blank" 
-                   rel="noopener noreferrer">
-                    <div style="display: flex; align-items: center;">
-                        <img src="Images/WA.png" alt="WhatsApp Logo" style="width: 40px; margin-right: 10px;">
-                        <div>
-                            <h3>Buka Agency Sendiri</h3>
-                            <p>Klik di sini untuk membuka agency Anda sendiri</p>
-                        </div>
+            <div class="link-card" onclick="window.open('https://wa.me/6281234567890', '_blank')">
+                <div class="link-content">
+                    <div class="link-icon">
+                        <i class="fab fa-whatsapp"></i>
                     </div>
-                </a>
+                    <div class="link-text">
+                        <div class="link-title">Konsultasi Gratis</div>
+                        <div class="link-description">Hubungi kami via WhatsApp</div>
+                    </div>
+                    <div class="link-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
             </div>
-            
-            
 
+            <div class="link-card" onclick="window.open('https://tiktok.com/@thiagency', '_blank')">
+                <div class="link-content">
+                    <div class="link-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <div class="link-text">
+                        <div class="link-title">TikTok Kami</div>
+                        <div class="link-description">Lihat konten viral kami</div>
+                    </div>
+                    <div class="link-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
 
+            <div class="link-card" onclick="window.open('https://instagram.com/thiagency', '_blank')">
+                <div class="link-content">
+                    <div class="link-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="link-text">
+                        <div class="link-title">Instagram</div>
+                        <div class="link-description">Follow update terbaru</div>
+                    </div>
+                    <div class="link-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
 
-        <div class="content" style="text-align: center; margin: 0 auto; width: 80%; color: white;">
-            <p style="color: white;">
-                Keuntungan bergabung menjadi anggota agency THI:
-            </p>
-            <p style="text-align: justify; color: white;">
-                1. Tidak ada target diamond untuk akun pemula<br>
-                2. Valid 15 hari 30 jam<br>
-                3. Bimbingan dan panduan live streaming<br>
-                4. Sircle dengan host live streaming dalam 1 grup WA<br>
-                5. Support dan pengaduan akun terkena pelanggaran untuk anggota
-            </p>
-        </div>
+            <div class="link-card" onclick="window.open('mailto:hello@thiagency.id', '_blank')">
+                <div class="link-content">
+                    <div class="link-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="link-text">
+                        <div class="link-title">Email Kami</div>
+                        <div class="link-description">hello@thiagency.id</div>
+                    </div>
+                    <div class="link-arrow">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Links -->
+        <section class="social-section">
+            <h3 class="social-title">Follow Kami</h3>
+            <div class="social-grid">
+                <div class="social-link" onclick="window.open('https://tiktok.com/@thiagency', '_blank')">
+                    <i class="fab fa-tiktok social-icon"></i>
+                </div>
+                <div class="social-link" onclick="window.open('https://instagram.com/thiagency', '_blank')">
+                    <i class="fab fa-instagram social-icon"></i>
+                </div>
+                <div class="social-link" onclick="window.open('https://youtube.com/@thiagency', '_blank')">
+                    <i class="fab fa-youtube social-icon"></i>
+                </div>
+                <div class="social-link" onclick="window.open('https://linkedin.com/company/thiagency', '_blank')">
+                    <i class="fab fa-linkedin-in social-icon"></i>
+                </div>
+                <div class="social-link" onclick="window.open('https://twitter.com/thiagency', '_blank')">
+                    <i class="fab fa-twitter social-icon"></i>
+                </div>
+                <div class="social-link" onclick="window.open('https://facebook.com/thiagency', '_blank')">
+                    <i class="fab fa-facebook-f social-icon"></i>
+                </div>
+               
+            </div>
+        </section>
+
+        <!-- Featured Section -->
+        <section class="featured-section">
+            <h3 class="featured-title">Layanan Unggulan</h3>
+            <div class="featured-card" onclick="window.open('https://thiagency.id/services', '_blank')">
+                <div class="featured-icon">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="featured-content">
+                    <h3>TikTok Marketing Package</h3>
+                    <p>Strategi lengkap untuk membuat brand Anda viral di TikTok. Mulai dari konten kreatif, influencer collaboration, hingga analytics reporting.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-logo">THI AGENCY</div>
+            <p class="footer-text">© 2024 THI Agency. All rights reserved.<br>Your Trusted TikTok Marketing Partner</p>
+        </footer>
     </div>
 
-    <footer>
-        <p>Design By: <span style="color: #ff0000;">&#9829;</span> Dafid SEO  <span style="color: #ff0000;">&#9829;</span></p>
-    </footer>
+    <script>
+        // Loading screen removal
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loading = document.getElementById('loading');
+                loading.style.opacity = '0';
+                setTimeout(() => loading.style.display = 'none', 500);
+            }, 1000);
+        });
+
+        // Add click animation to all clickable elements
+        document.querySelectorAll('.link-card, .social-link, .featured-card').forEach(element => {
+            element.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.5);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    pointer-events: none;
+                `;
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Add ripple animation to CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Parallax effect for floating elements
+        document.addEventListener('mousemove', (e) => {
+            const floatingElements = document.querySelectorAll('.floating');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            floatingElements.forEach((element, index) => {
+                const speed = (index + 1) * 0.5;
+                const x = (mouseX - 0.5) * speed * 20;
+                const y = (mouseY - 0.5) * speed * 20;
+                
+                element.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Typewriter effect for subtitle
+        const subtitle = document.querySelector('.subtitle');
+        const originalText = subtitle.textContent;
+        subtitle.textContent = '';
+        let charIndex = 0;
+
+        function typeWriter() {
+            if (charIndex < originalText.length) {
+                subtitle.textContent += originalText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+
+        // Start typewriter after loading
+        setTimeout(typeWriter, 1500);
+    </script>
 </body>
 </html>
