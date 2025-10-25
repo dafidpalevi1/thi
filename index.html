@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THI Agency - Your TikTok Marketing Partner</title>
+    <title>THI Agency - Agency Tiktok Indonesia</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
@@ -22,830 +23,1334 @@
             --light: #FFFFFF;
             --gray: #8A8AA0;
             --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-            --gradient-reverse: linear-gradient(135deg, var(--secondary), var(--primary));
-            --gradient-text: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-            --shadow: 0 10px 30px rgba(255, 0, 80, 0.15);
-            --shadow-hover: 0 15px 40px rgba(255, 0, 80, 0.25);
-            --card-bg: rgba(30, 30, 46, 0.95);
-            --card-border: rgba(255, 255, 255, 0.1);
+            --gradient-light: linear-gradient(135deg, #FF6B9C, #4CD7F5);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
 
         body {
-            background: linear-gradient(135deg, #0f0f1f 0%, #1a1a2e 50%, #16213e 100%);
-            color: var(--light);
-            min-height: 100vh;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(255, 0, 80, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(0, 242, 234, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 211, 0, 0.05) 0%, transparent 50%);
-            z-index: -1;
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
         .container {
-            max-width: 500px;
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
         }
 
         /* Header Styles */
-        .header {
-            text-align: center;
-            padding: 40px 0 30px;
-            animation: fadeInDown 1s ease;
-        }
-
-        .profile-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        .profile-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid transparent;
-            background: var(--gradient) padding-box, var(--gradient) border-box;
-            background-origin: border-box;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
-
-        .profile-image:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .verified-badge {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 30px;
-            height: 30px;
-            background: var(--gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 14px;
-            border: 3px solid var(--dark);
-            z-index: 3;
-        }
-
-        .profile-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 170px;
-            height: 170px;
-            background: var(--gradient);
-            border-radius: 50%;
-            filter: blur(20px);
-            opacity: 0.3;
-            animation: pulse 2s infinite;
-            z-index: 1;
-        }
-
-        .title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--gray);
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-top: 5px;
-        }
-
-        /* Links Section - FIXED BLUR */
-        .links-section {
-            margin-bottom: 40px;
-            animation: fadeInUp 1s ease 0.3s both;
-        }
-
-        .link-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 15px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            /* HAPUS backdrop-filter yang menyebabkan blur hitam */
-        }
-
-        .link-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        header {
+            background-color: var(--light);
+            position: fixed;
             width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            opacity: 0.1;
-            transition: left 0.5s ease;
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: box-shadow 0.3s ease;
         }
 
-        .link-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: var(--shadow-hover);
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .link-card:hover::before {
-            left: 0;
-        }
-
-        .link-content {
+        .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
-            position: relative;
-            z-index: 2;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.8rem;
         }
 
-        .link-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 15px;
-            background: var(--gradient);
+        .logo-link {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            flex-shrink: 0;
-        }
-
-        .link-text {
-            flex: 1;
-        }
-
-        .link-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-            color: var(--light);
-        }
-
-        .link-description {
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-
-        .link-arrow {
-            color: var(--gray);
-            font-size: 1.2rem;
+            gap: 10px;
             transition: transform 0.3s ease;
         }
 
-        .link-card:hover .link-arrow {
-            transform: translateX(5px);
+        .logo-link:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-img {
+            width: 168px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
             color: var(--primary);
         }
 
-        /* Social Links - FIXED BLUR */
-        .social-section {
-            margin-bottom: 40px;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .social-title {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: var(--gray);
-        }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-
-        .social-link {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 15px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
             cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 180px;
             position: relative;
             overflow: hidden;
-            /* HAPUS backdrop-filter */
+            background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
         }
 
-        .social-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .social-link:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary);
-            box-shadow: var(--shadow);
-        }
-
-        .social-link:hover::before {
-            opacity: 0.1;
-        }
-
-        .social-icon {
-            font-size: 1.5rem;
-            color: var(--light);
-            position: relative;
-            z-index: 2;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover .social-icon {
-            transform: scale(1.2);
-            color: var(--primary);
-        }
-
-        /* Featured Section - FIXED BLUR */
-        .featured-section {
-            margin-bottom: 40px;
-            animation: fadeInUp 1s ease 0.9s both;
-        }
-
-        .featured-title {
-            text-align: center;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: var(--gray);
-        }
-
-        .featured-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            /* HAPUS backdrop-filter */
-        }
-
-        .featured-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .featured-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 15px 40px rgba(255, 211, 0, 0.2);
-        }
-
-        .featured-card:hover::before {
-            opacity: 0.1;
-        }
-
-        .featured-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 15px;
-            background: var(--gradient);
+        .hero-content {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: white;
-            margin: 0 auto 15px;
-            position: relative;
-            z-index: 2;
+            justify-content: space-between;
+            gap: 50px;
         }
 
-        .featured-content {
-            position: relative;
-            z-index: 2;
+        .hero-text {
+            flex: 1;
         }
 
-        .featured-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: var(--light);
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
 
-        .featured-content p {
-            font-size: 0.9rem;
-            color: var(--gray);
-            line-height: 1.6;
-        }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 30px 0 20px;
-            color: var(--gray);
-            font-size: 0.9rem;
-            animation: fadeIn 1s ease 1.2s both;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-            background: var(--gradient-text);
+        .hero-text h1 span {
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-main-image {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-main-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Achievement Section */
+        .achievements {
+            background-color: #f8f9ff;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .achievement-card {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .achievement-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .achievement-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .achievement-card p {
+            color: var(--gray);
+        }
+
+        /* Team Section - FIXED */
+        .team {
+            background-color: var(--light);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .team-card {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            object-fit: cover;
+            border: 4px solid var(--light);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .team-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .team-role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .team-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: auto;
+        }
+
+        .team-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .team-social a:hover {
+            background: var(--gradient);
+            color: white;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: #f8f9ff;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 10px 20px rgba(255, 45, 85, 0.2);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        /* Testimonials Section - UPDATED */
+        .testimonials {
+            background-color: var(--light);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 0 20px;
+        }
+
+        .testimonial-card {
+            background: var(--light);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 5rem;
+            color: var(--primary);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .client-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            object-fit: cover;
+            border: 4px solid var(--light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 25px;
+            color: var(--dark);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .client-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .client-role {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .slider-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* FAQ Section */
+        .faq {
+            background-color: #f8f9ff;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--light);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 0, 80, 0.05);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--gray);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 30px 25px 30px;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Footer - UPDATED */
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            padding: 70px 0 30px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
             display: inline-block;
         }
 
-        .footer-text {
-            opacity: 0.7;
-        }
-
-        /* Animations */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 0.3;
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.1);
-                opacity: 0.5;
-            }
-        }
-
-        /* Floating Elements */
-        .floating {
-            position: fixed;
-            z-index: -1;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .floating:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            border-radius: 50%;
-            opacity: 0.1;
-            animation-delay: 0s;
-        }
-
-        .floating:nth-child(2) {
-            top: 60%;
-            right: 10%;
-            width: 80px;
-            height: 80px;
-            background: var(--secondary);
-            border-radius: 50%;
-            opacity: 0.1;
-            animation-delay: 2s;
-        }
-
-        .floating:nth-child(3) {
-            bottom: 20%;
-            left: 20%;
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
             width: 40px;
-            height: 40px;
-            background: var(--accent);
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo-img {
+            width: 140px;
+            height: auto;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a i {
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+
+        .footer-links a:hover {
+            color: var(--light);
+            transform: translateX(5px);
+        }
+
+        .footer-social-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-social-section h3 {
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            color: var(--light);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
-            opacity: 0.1;
-            animation-delay: 4s;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            font-size: 1.4rem;
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(180deg);
+        .social-link:hover {
+            background: var(--gradient);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .team-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
             }
             
-            .profile-image {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--light);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+                gap: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            /* Team Grid untuk Tablet */
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .team-card {
+                padding: 20px;
+            }
+            
+            .team-photo {
                 width: 120px;
                 height: 120px;
             }
             
-            .profile-glow {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .title {
-                font-size: 1.8rem;
-            }
-            
-            .subtitle {
-                font-size: 1rem;
-            }
-            
-            .stats {
-                gap: 20px;
-            }
-            
-            .stat-number {
-                font-size: 1.5rem;
-            }
-            
-            .social-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 10px;
-            }
-            
-            .social-link {
-                padding: 12px;
-            }
-            
-            .social-icon {
+            .team-card h3 {
                 font-size: 1.3rem;
+            }
+            
+            .team-card p {
+                font-size: 0.9rem;
+            }
+            
+            /* Logo untuk mobile */
+            .logo-img {
+                width: 140px;
+            }
+
+            .footer-social-section h3 {
+                font-size: 1.3rem;
+            }
+
+            .social-link {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            /* Testimonial responsive */
+            .client-avatar {
+                width: 90px;
+                height: 90px;
             }
         }
 
-        @media (max-width: 480px) {
-            .social-grid {
-                grid-template-columns: repeat(2, 1fr);
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
             }
             
-            .stats {
+            /* Team Grid untuk Mobile */
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
             
-            .stat-item {
-                flex: 1;
+            .team-card {
+                padding: 15px;
             }
             
-            .link-content {
+            .team-photo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .team-card h3 {
+                font-size: 1.1rem;
+            }
+            
+            .team-role {
+                font-size: 0.9rem;
+            }
+            
+            .team-card p {
+                font-size: 0.8rem;
+                margin-bottom: 15px;
+            }
+            
+            .team-social a {
+                width: 35px;
+                height: 35px;
+            }
+            
+            /* Logo untuk mobile kecil */
+            .logo-img {
+                width: 120px;
+            }
+            
+            .footer-logo-img {
+                width: 120px;
+            }
+
+            .footer-social-section {
+                margin: 30px 0;
+                padding: 25px 0;
+            }
+
+            .social-links {
+                gap: 15px;
+            }
+
+            .social-link {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .faq-question {
+                padding: 20px 25px;
+                font-size: 1.1rem;
+            }
+
+            .faq-answer {
+                padding: 0 25px;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 0 25px 20px 25px;
+            }
+
+            /* Testimonial responsive */
+            .client-avatar {
+                width: 80px;
+                height: 80px;
+            }
+
+            .testimonial-card {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            /* Team Grid untuk Mobile Sangat Kecil */
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 12px;
             }
             
-            .link-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
+            .team-card {
+                padding: 12px;
             }
-        }
+            
+            .team-photo {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .team-card h3 {
+                font-size: 1rem;
+            }
+            
+            .team-role {
+                font-size: 0.8rem;
+            }
+            
+            .team-card p {
+                font-size: 0.75rem;
+                margin-bottom: 12px;
+            }
+            
+            .team-social a {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
 
-        /* Loading Animation */
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
-        }
+            .social-links {
+                gap: 12px;
+            }
 
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid transparent;
-            border-top: 3px solid var(--primary);
-            border-right: 3px solid var(--secondary);
-            border-bottom: 3px solid var(--accent);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            /* Testimonial responsive */
+            .client-avatar {
+                width: 70px;
+                height: 70px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading" id="loading">
-        <div class="loading-spinner"></div>
-    </div>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="img/logothi.png" alt="THI Agency Logo" class="logo-img">
+                </a>
+            </div>
+            <nav class="nav-links">
+                <a href="#home">Beranda</a>
+                <a href="#achievements">Pencapaian</a>
+                <a href="#team">Tim Kami</a>
+                <a href="#services">Layanan</a>
+                <a href="#testimonials">Testimoni</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
 
-    <!-- Floating Background Elements -->
-    <div class="floating"></div>
-    <div class="floating"></div>
-    <div class="floating"></div>
-
-    <div class="container">
-        <!-- Header Section -->
-        <header class="header">
-            <div class="profile-container">
-                <div class="profile-glow"></div>
-                <img src="img/thi.png" alt="THI Agency" class="profile-image">
-                <div class="verified-badge">
-                    <i class="fas fa-check"></i>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Agency TikTok <span>Tallent Host Iwan</span> di Indonesia</h1>
+                <p>THI Agency telah diakui sebagai salah satu agency TikTok terbaik dengan pencapaian luar biasa dalam membantu kreator berkembang di platform TikTok untuk live streaming.</p>
+                <div class="hero-buttons">
+                    <a href="https://www.tiktok.com/t/ZSkKhEudQ/" class="btn btn-primary">Daftar Sekarang</a>
+                    <a href="#team" class="btn btn-secondary">Kenali Tim Kami</a>
                 </div>
             </div>
-            
-            <h1 class="title">THI Agency</h1>
-            <p class="subtitle">Agency TikTok Terpercaya di Indonesia Membantu Kreator Tumbuh & Viral di TikTok</p>
-            
-            <div class="stats">
-                <div class="stat-item">
-                    <span class="stat-number">1000+</span>
-                    <span class="stat-label">Kreator</span>
+            <div class="hero-image">
+                <!-- Gambar lokal untuk hero section -->
+                <img src="img/thi.png" alt="THI Agency - TikTok Marketing" class="hero-main-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pencapaian Kami</h2>
+                <p>Bukti kesuksesan dan pengakuan yang telah kami raih</p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="achievement-number">#1</div>
+                    <p>Peringkat Agency TikTok Terbaik</p>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">87%</span>
-                    <span class="stat-label">Success Rate</span>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="achievement-number">150+</div>
+                    <p>Brand Telah Dipercaya</p>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">5K+</span>
-                    <span class="stat-label">Konten Viral</span>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="achievement-number">87%</div>
+                    <p>Rate Kesuksesan Campaign</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="achievement-number">5000+</div>
+                    <p>Konten Viral Dihasilkan</p>
                 </div>
             </div>
-        </header>
+        </div>
+    </section>
 
-        <!-- Main Links Section -->
-        <section class="links-section">
-            <div class="link-card" onclick="window.open('https://www.tiktok.com/t/ZSkKhEudQ/', '_blank')">
-                <div class="link-content">
-                    <div class="link-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <div class="link-text">
-                        <div class="link-title">Daftar Agency</div>
-                        <div class="link-description">Klik link ini daftar agency</div>
-                    </div>
-                    <div class="link-arrow">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tim Kami</h2>
+                <p>Para ahli di balik kesuksesan THI Agency</p>
             </div>
-
-
-            <div class="link-card" onclick="window.open('https://thiagency.id', '_blank')">
-                <div class="link-content">
-                    <div class="link-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <div class="link-text">
-                        <div class="link-title">Website Utama</div>
-                        <div class="link-description">Kunjungi website utama THI Agency</div>
-                    </div>
-                    <div class="link-arrow">
-                        <i class="fas fa-chevron-right"></i>
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="img/iwan.png" alt="Iwan THI - Founder" class="team-photo">
+                    <h3>Iwan THI</h3>
+                    <div class="team-role">Founder & CEO</div>
+                    <p>Pakar TikTok marketing dengan pengalaman 5+ tahun di industri digital. Spesialis dalam strategi konten viral dan growth hacking di platform TikTok.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-            </div>
-
-            <div class="link-card" onclick="window.open('https://wa.me/6281219399064', '_blank')">
-                <div class="link-content">
-                    <div class="link-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <div class="link-text">
-                        <div class="link-title">Chat Admin</div>
-                        <div class="link-description">Hubungi kami via WhatsApp</div>
-                    </div>
-                    <div class="link-arrow">
-                        <i class="fas fa-chevron-right"></i>
+                <div class="team-card">
+                    <img src="img/sinder.jpeg" alt="Sinder Dadang - Admin THI" class="team-photo">
+                    <h3>Sinder Dadang</h3>
+                    <div class="team-role">Admin THI</div>
+                    <p>Admin pengembangan akun kreator atau pengelola data anggota agensi.
+                    </p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
-            </div>
-
-            <div class="link-card" onclick="window.open('https://wa.me/6281219399064', '_blank')">
-                <div class="link-content">
-                    <div class="link-icon">
-                        <i class="fab fa-whatsapp"></i>
+                <div class="team-card">
+                    <img src="img/wati.jpeg" alt="Wati THI - Admin THI" class="team-photo">
+                    <h3>Wati THI</h3>
+                    <div class="team-role">Admin THI</div>
+                    <p>Edukasi live streaming dan kendala pinalty kreator</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
                     </div>
-                    <div class="link-text">
-                        <div class="link-title">Admin PK</div>
-                        <div class="link-description">Hubungi admin PK via WhatsApp</div>
-                    </div>
-                    <div class="link-arrow">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                </div>
-            </div>
-
-        
-
-           
-        </section>
-
-        <!-- Social Media Links -->
-        <section class="social-section">
-            <h3 class="social-title">Follow Kami</h3>
-            <div class="social-grid">
-                <div class="social-link" onclick="window.open('https://www.tiktok.com/@thiofficial91', '_blank')">
-                    <i class="fab fa-tiktok social-icon"></i>
-                </div>
-                <div class="social-link" onclick="window.open('#', '_blank')">
-                    <i class="fab fa-instagram social-icon"></i>
-                </div>
-                <div class="social-link" onclick="window.open('#', '_blank')">
-                    <i class="fab fa-youtube social-icon"></i>
-                </div>
-                <div class="social-link" onclick="window.open('#', '_blank')">
-                    <i class="fab fa-linkedin-in social-icon"></i>
-                </div>
-                <div class="social-link" onclick="window.open('#', '_blank')">
-                    <i class="fab fa-twitter social-icon"></i>
-                </div>
-                <div class="social-link" onclick="window.open('#', '_blank')">
-                    <i class="fab fa-facebook-f social-icon"></i>
                 </div>
                
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-logo">THI AGENCY</div>
-            <p class="footer-text">© 2025 THI Agency. All rights reserved.</p>
-        </footer>
-    </div>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Layanan Kami</h2>
+                <p>Solusi lengkap untuk kebutuhan TikTok marketing Anda</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Konten Kreatif</h3>
+                    <p>Produksi konten TikTok yang engaging dan sesuai dengan tren terkini untuk meningkatkan brand awareness</p>
+                    <a href="#" class="btn btn-primary">Selengkapnya</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Strategi Marketing</h3>
+                    <p>Perencanaan kampanye TikTok yang terukur dengan target dan KPI yang jelas</p>
+                    <a href="#" class="btn btn-primary">Selengkapnya</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Kolaborasi Influencer</h3>
+                    <p>Menghubungkan brand dengan influencer yang relevan untuk menjangkau audiens target</p>
+                    <a href="#" class="btn btn-primary">Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section - UPDATED -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Testimoni Klien</h2>
+                <p>Apa kata klien yang telah bekerja sama dengan kami</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-track">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <img src="img/Abi yayasan panti asuhan.jpeg" alt="Abi yayasan panti asuhan" class="client-avatar">
+                            <p class="testimonial-text">"THI Agency membantu live streaming kami menjadi viral di TikTok. Engagement meningkat 300% ! Tim mereka sangat profesional dan kreatif."</p>
+                            <h4 class="client-name">Abi yayasan panti asuhan</h4>
+                           
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <img src="img/Bunda enung.jpeg" alt="Bunda enung" class="client-avatar">
+                            <p class="testimonial-text">"Strategi konten mereka sangat kreatif dan sesuai dengan target audiens kami. Hasilnya melebihi ekspektasi! Dalam 2 bulan, followers bertambah 100K."</p>
+                            <h4 class="client-name">Bunda enung</h4>
+                
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <img src="img/Nicko.jpeg" alt="Nicko" class="client-avatar">
+                            <p class="testimonial-text">"Kolaborasi dengan influencer yang mereka atur sangat smooth dan memberikan hasil yang maksimal untuk brand kami. ROI yang didapat sangat memuaskan."</p>
+                            <h4 class="client-name">Nicko</h4>
+                      
+                        </div>
+                    </div>
+
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <img src="img/Amri mahmud.jpeg" alt="Amri mahmud" class="client-avatar">
+                            <p class="testimonial-text">"Kolaborasi dengan influencer yang mereka atur sangat smooth dan memberikan hasil yang maksimal untuk brand kami. ROI yang didapat sangat memuaskan."</p>
+                            <h4 class="client-name">Amri mahmud</h4>
+                      
+                        </div>
+                    </div>
+
+                </div>
+                <div class="slider-nav">
+                    <div class="slider-dot active"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pertanyaan Umum</h2>
+                <p>Semua yang perlu Anda ketahui tentang THI Agency</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Apa itu THI Agency?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>THI Agency adalah agency TikTok terpercaya di Indonesia yang khusus membantu kreator untuk berkembang di platform TikTok. Kami menyediakan layanan lengkap mulai dari strategi konten, produksi, hingga kolaborasi influencer.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Berapa biaya layanan THI Agency?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tidak ada biaya layanan sama sekali kami berikan secara gratis. Silakan hubungi kami untuk konsultasi gratis dan pendaftaran secara gratis.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Berapa lama waktu yang dibutuhkan untuk melihat hasil?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Biasanya Anda akan mulai melihat peningkatan engagement dalam 2-4 minggu pertama. Hasil signifikan seperti peningkatan followers dan conversion biasanya terlihat dalam 1-3 bulan, tergantung pada strategi dan konsistensi konten.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Apakah THI Agency hanya melayani kreator besar?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tidak! Kami melayani semua kreator yang ada di tiktok, dari kreator pemula sampai senior. Kami senantiasa membantu anda untuk berkembang dengan kami.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Bagaimana cara bergabung dengan THI Agency?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Anda bisa langsung menghubungi kami melalui WhatsApp, email, atau mengisi formulir di website. Tim kami akan menjadwalkan konsultasi gratis untuk memahami kebutuhan dan memberikan rekomendasi terbaik untuk live streaming Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <a href="index.html" class="footer-logo">
+                        <img src="img/logothi.png" alt="THI Agency Logo" class="footer-logo-img">
+                    </a>
+                    <p>Agency TikTok peringkat terbaik di Indonesia dengan track record yang terbukti membantu kreator berkembang di platform TikTok.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Layanan</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Konten Kreatif</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Strategi Marketing</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Kolaborasi Influencer</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Analisis & Reporting</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Perusahaan</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tentang Kami</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Pencapaian</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tim Kami</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Karir</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontak</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> WhatsApp</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Email</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> TikTok</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Social Media Section - ADDED -->
+            <div class="footer-social-section">
+                <h3>Ikuti Kami di Media Sosial</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 THI Agency. All rights reserved. | Agency TikTok</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Loading screen removal
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                const loading = document.getElementById('loading');
-                loading.style.opacity = '0';
-                setTimeout(() => loading.style.display = 'none', 500);
-            }, 1000);
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
         });
 
-        // Add click animation to all clickable elements
-        document.querySelectorAll('.link-card, .social-link, .featured-card').forEach(element => {
-            element.addEventListener('click', function(e) {
-                // Create ripple effect
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.cssText = `
-                    position: absolute;
-                    border-radius: 50%;
-                    background: rgba(255, 255, 255, 0.5);
-                    transform: scale(0);
-                    animation: ripple 0.6s linear;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    pointer-events: none;
-                `;
-                
-                this.style.position = 'relative';
-                this.style.overflow = 'hidden';
-                this.appendChild(ripple);
-                
-                setTimeout(() => ripple.remove(), 600);
-            });
-        });
+        // Testimonial Slider
+        const track = document.querySelector('.testimonial-track');
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
 
-        // Add ripple animation to CSS
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Parallax effect for floating elements
-        document.addEventListener('mousemove', (e) => {
-            const floatingElements = document.querySelectorAll('.floating');
-            const mouseX = e.clientX / window.innerWidth;
-            const mouseY = e.clientY / window.innerHeight;
+        function goToSlide(slideIndex) {
+            track.style.transform = `translateX(-${slideIndex * 100}%)`;
             
-            floatingElements.forEach((element, index) => {
-                const speed = (index + 1) * 0.5;
-                const x = (mouseX - 0.5) * speed * 20;
-                const y = (mouseY - 0.5) * speed * 20;
-                
-                element.style.transform = `translate(${x}px, ${y}px)`;
-            });
-        });
-
-        // Typewriter effect for subtitle
-        const subtitle = document.querySelector('.subtitle');
-        const originalText = subtitle.textContent;
-        subtitle.textContent = '';
-        let charIndex = 0;
-
-        function typeWriter() {
-            if (charIndex < originalText.length) {
-                subtitle.textContent += originalText.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 50);
-            }
+            // Update active dot
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[slideIndex].classList.add('active');
+            
+            currentSlide = slideIndex;
         }
 
-        // Start typewriter after loading
-        setTimeout(typeWriter, 1500);
+        // Add click events to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+            });
+        });
+
+        // Auto slide every 5 seconds
+        setInterval(() => {
+            let nextSlide = (currentSlide + 1) % slides.length;
+            goToSlide(nextSlide);
+        }, 5000);
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
     </script>
 </body>
 </html>
